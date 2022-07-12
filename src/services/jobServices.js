@@ -8,7 +8,7 @@ class JobServices {
     }
 
     async jobList(params) {
-        const { description, location, page} = params
+        const { description, location, page, full_time} = params
         try {
             let api = `http://dev3.dansmultipro.co.id/api/recruitment/positions.json?`
             if (description) {
@@ -17,7 +17,10 @@ class JobServices {
             if (location) {
                 api = api + `location=${location}&`
             }
-
+            
+            if (full_time) {
+                api = api + `full_time=${full_time}&`
+            }
             if (page) {
                 api = api + `page=${page}`
             }
